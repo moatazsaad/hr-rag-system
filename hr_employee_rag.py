@@ -56,7 +56,7 @@ for folder in folders:
 print(f"Loaded {len(documents)} documents.")
 
 # Split documents into chunks 
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
 chunks = text_splitter.split_documents(documents)
 print(f"Created {len(chunks)} chunks from employee documents.")
 
