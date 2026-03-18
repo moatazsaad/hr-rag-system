@@ -1,71 +1,131 @@
-# HR Employee RAG
-
-A Retrieval-Augmented Generation (RAG) system for HR employee insights using OpenAI, LangChain, and Chroma.
+# HR RAG System
 
 ## Overview
+HR RAG System is a Retrieval-Augmented Generation (RAG) application for querying HR employee data using natural language. The system transforms structured employee data into searchable documents, retrieves relevant context using embeddings, and generates answers using an LLM.
 
-This project converts HR employee data from a CSV file into individual Markdown files, creates embeddings with OpenAI, and stores them in a Chroma vector database. Users can interact with the data via a conversational interface (Gradio) to get summaries or insights about employees. It also supports **evaluation mode**, where answers are returned along with source documents for verification.
+## 🧠 Architecture
+HR Data → Document Processing → Embeddings (OpenAI) → Chroma Vector Store → Retrieval → LLM → FastAPI → Response
 
-## Features
+## 🚀 Features
+- Converts HR employee data into structured documents
+- Generates embeddings using OpenAI
+- Stores vectors in Chroma for efficient retrieval
+- Uses LangChain for retrieval and response generation
+- Exposes a FastAPI endpoint for querying the system
+- Returns context-aware, generated answers from HR data
 
-- Converts CSV employee data into structured Markdown documents.
-- Splits documents into chunks for optimal RAG performance.
-- Generates embeddings with OpenAI and stores them in a Chroma vector store.
-- Provides a conversational interface to query employee data.
-- **Evaluation mode**: Returns answers with supporting sources for transparency.
-- Local Gradio interface with shareable link for easy access.
+## 🧱 Tech Stack
+- Python  
+- OpenAI  
+- LangChain  
+- Chroma (Vector Database)  
+- FastAPI  
 
-## Installation
+## 📊 Example Use Cases
+- Summarize an employee profile  
+- Query HR data using natural language  
+- Retrieve insights from employee records  
+- Generate answers grounded in internal data  
 
-1. Clone the repository:
+## 🔌 API Usage
 
-```bash
-git clone https://github.com/moatazsaad/HR_Employee_RAG.git
-cd HR_Employee_RAG
+### Endpoint
+```
+
+POST /query
+
 ````
 
-2. Create a Python environment and install dependencies:
+### Request Body
+```json
+{
+  "question": "Give me a summary of employee 1"
+}
+````
+
+### Response
+
+```json
+{
+  "answer": "..."
+}
+```
+
+## 🌐 Deployment
+
+This project is structured as an API-based AI system using FastAPI. It can be deployed to cloud platforms, but is currently provided as a local or development environment due to dataset size and deployment constraints.
+
+## 📁 Project Structure
+
+```
+hr-rag-system/
+├── hr_employee_rag.py        # RAG pipeline and core logic
+├── hr_rag_api.py             # FastAPI application
+├── hr_data/
+│   └── employees/            # Processed employee documents
+├── HR-Employee-Attrition.csv # Source dataset
+├── requirements.txt          # Dependencies
+└── README.md
+```
+
+## ▶️ Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/moatazsaad/hr-rag-system.git
+cd hr-rag-system
+```
+
+Create a virtual environment:
 
 ```bash
 python -m venv env
-# On Windows:
-env\Scripts\activate
-# On macOS/Linux:
-source env/bin/activate
+```
 
+Activate environment:
+
+Windows:
+
+```bash
+env\Scripts\activate
+```
+
+macOS/Linux:
+
+```bash
+source env/bin/activate
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
-3. Set your OpenAI API key in a `.env` file:
+Set your OpenAI API key in a `.env` file:
 
-```
+```env
 OPENAI_API_KEY=your_api_key_here
 ```
 
-## Usage
-
-Run the main script:
+Run the API:
 
 ```bash
-python hr_employee_rag.py
+uvicorn hr_rag_api:app --reload
 ```
 
-* A Gradio chat interface will launch locally and provide a shareable link.
-* Example queries:
+## 💡 Example Query
 
-  * `"Give me a summary of employee 1"` (normal chat mode)
-  * `"Give me a summary of employee 1"` in **evaluation mode** to get sources alongside the answer.
-
-## File Structure
-
+```bash
+curl -X POST "http://127.0.0.1:8000/query" \
+-H "Content-Type: application/json" \
+-d '{"question": "Give me a summary of employee 1"}'
 ```
-HR_Employee_RAG/
-├─ hr_employee_rag.py       # Main script for RAG pipeline, Gradio interface, and evaluation mode
-├─ hr_data/
-│  └─ employees/           # Markdown files for each employee
-├─ requirements.txt        # Project dependencies
-└─ README.md
 
+## ✅ Project Highlights
 
-If you want, I can also **add a small usage snippet for `curl` or Python POST requests** for evaluation mode, so users can test it outside Gradio. Do you want me to do that?
-```
+* End-to-end RAG pipeline from structured HR data to generated answers
+* Combines embeddings, vector database, and LLMs
+* Exposes a production-style API using FastAPI
+* Demonstrates applied GenAI and retrieval-based systems
