@@ -3,10 +3,10 @@
 ## Overview
 HR RAG System is a Retrieval-Augmented Generation (RAG) application for querying HR employee data using natural language. The system transforms structured employee data into searchable documents, retrieves relevant context using embeddings, and generates answers using an LLM.
 
-## 🧠 Architecture
+## Architecture
 HR Data → Document Processing → Embeddings (OpenAI) → Chroma Vector Store → Retrieval → LLM → FastAPI → Response
 
-## 🚀 Features
+## Features
 - Converts HR employee data into structured documents
 - Generates embeddings using OpenAI
 - Stores vectors in Chroma for efficient retrieval
@@ -14,20 +14,20 @@ HR Data → Document Processing → Embeddings (OpenAI) → Chroma Vector Store 
 - Exposes a FastAPI endpoint for querying the system
 - Returns context-aware, generated answers from HR data
 
-## 🧱 Tech Stack
+## Tech Stack
 - Python  
 - OpenAI  
 - LangChain  
 - Chroma (Vector Database)  
 - FastAPI  
 
-## 📊 Example Use Cases
+## Example Use Cases
 - Summarize an employee profile  
 - Query HR data using natural language  
 - Retrieve insights from employee records  
 - Generate answers grounded in internal data  
 
-## 🔌 API Usage
+## API Usage
 
 ### Endpoint
 ```
@@ -51,11 +51,11 @@ POST /query
 }
 ```
 
-## 🌐 Deployment
+## Deployment
 
 This project is structured as an API-based AI system using FastAPI. It can be deployed to cloud platforms, but is currently provided as a local or development environment due to dataset size and deployment constraints.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 hr-rag-system/
@@ -68,7 +68,7 @@ hr-rag-system/
 └── README.md
 ```
 
-## ▶️ Getting Started
+## Getting Started
 
 Clone the repository:
 
@@ -115,7 +115,7 @@ Run the API:
 uvicorn hr_rag_api:app --reload
 ```
 
-## 💡 Example Query
+## Example Query
 
 ```bash
 curl -X POST "http://127.0.0.1:8000/query" \
@@ -123,7 +123,7 @@ curl -X POST "http://127.0.0.1:8000/query" \
 -d '{"question": "Give me a summary of employee 1"}'
 ```
 
-## ✅ Project Highlights
+## Project Highlights
 
 * End-to-end RAG pipeline from structured HR data to generated answers
 * Combines embeddings, vector database, and LLMs
